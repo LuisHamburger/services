@@ -4,7 +4,6 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 
 import * as bcrypt from 'bcrypt';
-import { OAuth2Client } from 'google-auth-library';
 import { Model } from 'mongoose';
 import { LoginDTO, UsuarioDTO } from 'src/common/dtos/usuario.dto';
 import { AuthEnums } from 'src/common/enums/auth.enums';
@@ -19,9 +18,7 @@ export class AuthService {
 
     constructor(private readonly jwtService: JwtService,
         @InjectModel(Usuario.name) private usuarioModel: Model<UsuarioDocument>,
-        private readonly configService: ConfigService,
-        private _client: OAuth2Client) {
-        this._client = new OAuth2Client(this.configService.get<string>(AuthEnums.GOOGLE_ID));
+        private readonly configService: ConfigService) {
     }
 
     generarToken(usuario: UsuarioDTO): string {
@@ -71,19 +68,5 @@ export class AuthService {
         }
     }
 
-    async validarTokenGoogle(token: string) {
-        try {
-            const ticket = await this._client.verifyIdToken({
-                idToken: token,
-                audience: this.configService.get<string>(AuthEnums.GOOGLE_ID)
-
-            });
-
-            return ticket.getPayload();
-
-
-        } catch (error) {
-            throw new BadRequestException(error);
-        }
-    }
+   
 }

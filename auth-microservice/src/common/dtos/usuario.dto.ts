@@ -20,8 +20,6 @@ export class UsuarioDTO {
 
     rol: string;
 
-    google: boolean;
-
     esEliminado: boolean;
 }
 

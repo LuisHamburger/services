@@ -4,7 +4,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthEnums } from 'src/common/enums/auth.enums';
 import { AuthService } from './auth.service';
 import { DatabaseModule } from '../database/database.module';
-import { OAuth2Client } from 'google-auth-library';
 import { AuthController } from './auth.controller';
 
 @Module({
@@ -21,8 +20,7 @@ import { AuthController } from './auth.controller';
   ],
   controllers: [AuthController], 
   providers: [
-    AuthService,
-    OAuth2Client],
+    AuthService],
   exports: [AuthService]
 })
 export class AuthModule { }

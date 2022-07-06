@@ -22,9 +22,6 @@ export class Usuario {
     rol: string;
 
     @Prop({ default: false })
-    google: boolean;
-
-    @Prop({ default: false })
     esEliminado: boolean;
 
 }
