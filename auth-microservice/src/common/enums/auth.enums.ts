@@ -1,0 +1,5 @@
+export enum AuthEnums{
+    JWT_SECRET_KEY = 'JWT_SECRET_KEY',
+    JWT_EXPIRATION = 'JWT_EXPIRATION',
+    GOOGLE_ID = 'GOOGLE_ID'
+}
