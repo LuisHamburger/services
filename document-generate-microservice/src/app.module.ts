@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+
+import { ToPdfModule } from './to-pdf/to-pdf.module';
+import { ToExcelModule } from './to-excel/to-excel.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    ToPdfModule,
+    ToExcelModule
+  ]
 })
-export class AppModule {}
+export class AppModule { }
