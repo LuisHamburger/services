@@ -1,4 +1,4 @@
-# Microservicio de Autenticación.
+# Servicio de Autenticación.
 
 ## ¿Cómo funciona?
 
